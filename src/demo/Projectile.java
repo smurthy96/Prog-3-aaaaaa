@@ -32,12 +32,12 @@ public class Projectile extends Sprite{
 	}
 	public double getDx() {
 		// TODO Auto-generated method stub
-		return super.getX();
+		return givenDx;
 	}
 
 	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.getY();
+		return givenDy;
 		
 	}
 
@@ -56,14 +56,13 @@ public class Projectile extends Sprite{
 		return this.ballistic;
 	}
 	public void update()
-	{
-		 super.update();
-		 double newX=super.getXExact()+givenDx;
-		 double newY=super.getYExact()+givenDy;
-		 super.setPosition(newX, newY);
-		 this.setDirection(givenDx, givenDy+gravity);
-		 
-	}
+	  {
+	    super.update();
+	    double newX=super.getXExact()+givenDx;
+	    double newY=super.getYExact()+givenDy;
+	    setDirection(givenDx, givenDy+gravity);
+	    super.setPosition(newX, newY);
+	  }
 
 	
 

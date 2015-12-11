@@ -31,12 +31,12 @@ public class Platform extends Sprite{
 	}
 	public double getDx() {
 		// TODO Auto-generated method stub
-		return this.subY;
+		return this.givenDx;
 	}
 
 	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.subX;
+		return this.givenDy;
 	}
 	public void setBounds(double left, double right){
 		left = Double.POSITIVE_INFINITY;
