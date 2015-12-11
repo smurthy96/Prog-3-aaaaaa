@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-
 import hw3.Renderer;
 import hw3.Sprite;
 
@@ -31,7 +30,11 @@ import hw3.Sprite;
  */
 public class JumpExample extends JPanel
 {
-  // Window size, fixed for simplicity
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+// Window size, fixed for simplicity
   private static final int WIDTH = 600;
   private static final int HEIGHT = 400;
   

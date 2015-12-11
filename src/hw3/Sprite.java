@@ -11,22 +11,22 @@ public abstract class Sprite
   /**
    * Horizontal coordinate of the upper-left corner.
    */
-  private double x;
+  private double x = 0;
   
   /**
    * Vertical coordinate of the upper-left corner.
    */
-  private double y;
+  private double y = 0;
   
   /**
    * Width of this object, normally assumed to be in pixels.
    */
-  private int width;
+  private int width = 0;
   
   /**
    * Height of this object, normally assumed to be in pixels.
    */
-  private int height;
+  private int height = 0;
   
   /**
    * Flag indicating whether this object has been marked for deletion.
@@ -36,7 +36,7 @@ public abstract class Sprite
   /**
    * Number of times the update() method has been called.
    */
-  private int ticks;
+  private int ticks = 0;
   
   /**
    * A Renderer for drawing this object using a graphics context.
@@ -187,7 +187,7 @@ public abstract class Sprite
    */
   public int getTicks()
   {
-    return ticks;
+	    return ticks;
   }
   
   /**

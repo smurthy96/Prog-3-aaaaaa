@@ -67,25 +67,25 @@ public class maintester {
 		
 		
 //////////////////////Enemy vs Plat//////////////////////////
-	    // left side at x = 0, right side at 50
-	    Platform p = new Platform(0, 100, 50, 10, null);
-	    
-	    // 10 x 10 enemy at x = 25
-	    Enemy e = new Enemy(25, 90, 10, 10, null);
-	    p.addChild(e);
-	    e.setDirection(-30, 0);
-	    
-	    // 1) update on platform should update enemy object too
-	    // 2) updating enemy should set enemy's bounds to be left and right side of platform
-	    // 3) hitting bound should limit enemy's position and reverse dx
-	    p.update();
-	    
-	    System.out.println(e.getX());  // should be 0
-	    System.out.println(e.getDx()); // should be +30    
-	    p.update();
-	    p.update();
-	    System.out.println(e.getX());  // should be 40
-	    System.out.println(e.getDx()); // should be -30
+//	    // left side at x = 0, right side at 50
+//	    Platform p = new Platform(0, 100, 50, 10, null);
+//	    
+//	    // 10 x 10 enemy at x = 25
+//	    Enemy e = new Enemy(25, 90, 10, 10, null);
+//	    p.addChild(e);
+//	    e.setDirection(-30, 0);
+//	    
+//	    // 1) update on platform should update enemy object too
+//	    // 2) updating enemy should set enemy's bounds to be left and right side of platform
+//	    // 3) hitting bound should limit enemy's position and reverse dx
+//	    p.update();
+//	    
+//	    System.out.println(e.getX());  // should be 0
+//	    System.out.println(e.getDx()); // should be +30    
+//	    p.update();
+//	    p.update();
+//	    System.out.println(e.getX());  // should be 40
+//	    System.out.println(e.getDx()); // should be -30
 ///////////////////////////////////////////////////////////////////
 	
 ////////////////////////////getcount//////////////////////////////
@@ -100,6 +100,18 @@ public class maintester {
 //		System.out.println(e.getCount());  // expected 0
 //		System.out.println(e.shouldDelete()); // expected true
 //////////////////////////////////////////////////////////////////
+		
+		
+		Platform e = new Platform(100, 0, 10, 10, null);
+		e.setBounds(90, 120);
+		e.setDirection(15, 0);
+		e.update();
+		System.out.println(e.getX()); // should be 110, right side of object can't go past boundary
+		System.out.println(e.getDx()); // should be -15
+		e.update();
+		e.update();
+		System.out.println(e.getX()); // should be 90, left side of object can't go past boundary
+		System.out.println(e.getDx()); // should be 15
 
 		
 	}

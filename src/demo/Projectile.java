@@ -1,5 +1,7 @@
 package demo;
 
+import java.awt.Graphics;
+
 import hw3.Renderer;
 import hw3.Sprite;
 
@@ -12,32 +14,37 @@ public class Projectile extends Sprite{
 	private double givenDx = 0;
 	private double givenDy = 0;
 	private int gravity;
+	private Renderer r;
 	public Projectile(int x, int y, int width, int hight, Renderer r) {
 
 		super(x, y,width,hight,r);
 		
 		this.x = x;
 		this.y = y;
+		this.r = r;
 	}
 
 	public void setDirection(double givenDx, double givenDy){
 		
-		this.givenDx = givenDx;
-		this.givenDy = givenDy;
+
 		if(!(ballistic))
-			this.x = givenDx;
-		this.y = givenDy;
+			this.x = this.givenDx;
+		this.y = this.givenDy;
+		
+//		if(!(ballistic))
+//			this.x = givenDx;
+//		this.y = givenDy;
 		//System.out.println(givenDx+"<_____________>"+givenDy);
 		
 	}
 	public double getDx() {
 		// TODO Auto-generated method stub
-		return this.x+givenDx;
+		return this.x;
 	}
 
 	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.y+givenDy;
+		return this.y;
 		
 	}
 
@@ -56,12 +63,14 @@ public class Projectile extends Sprite{
 		return this.ballistic;
 	}
 	public void update(){
-		if(!(ballistic))
-			this.x += this.givenDx;
-		this.y += this.givenDy;
-		this.y += this.gravity;
+
+		
+		this.x += super.getXExact();
+		this.y += super.getYExact()+this.gravity;
+		
 
 	}
+
 	
 
 
