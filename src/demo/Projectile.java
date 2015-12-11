@@ -7,34 +7,27 @@ import hw3.Sprite;
 
 public class Projectile extends Sprite{
 	
-
 	private double x = 0;
 	private double y = 0;
 	private boolean ballistic;
 	private double givenDx = 0;
 	private double givenDy = 0;
-	private int gravity;
+	private double gravity;
 	private Renderer r;
 	public Projectile(int x, int y, int width, int hight, Renderer r) {
 
 		super(x, y,width,hight,r);
-		
-		this.x = x;
-		this.y = y;
-		this.r = r;
+
 	}
 
 	public void setDirection(double givenDx, double givenDy){
 		
 
 		if(!(ballistic))
-			this.x = this.givenDx;
-		this.y = this.givenDy;
+			this.givenDx = givenDx;
+		this.givenDy = givenDy;
 		
-//		if(!(ballistic))
-//			this.x = givenDx;
-//		this.y = givenDy;
-		//System.out.println(givenDx+"<_____________>"+givenDy);
+
 		
 	}
 	public double getDx() {
@@ -50,7 +43,7 @@ public class Projectile extends Sprite{
 
 	public void setGravity(double gravity) {
 		// TODO Auto-generated method stub
-		this.gravity += gravity;
+		this.gravity = gravity;
 		
 	}
 
@@ -62,13 +55,13 @@ public class Projectile extends Sprite{
 	public boolean isBallistic(){
 		return this.ballistic;
 	}
-	public void update(){
-
-		
-		this.x += super.getXExact();
-		this.y += super.getYExact()+this.gravity;
-		
-
+	public void update()
+	{
+	    super.update();
+	    double newX=super.getXExact()+givenDx;
+	    double newY=super.getYExact()+givenDy;
+	    super.setPosition(givenDx, givenDy+gravity);
+	    super.setPosition(newX, newY);
 	}
 
 	
