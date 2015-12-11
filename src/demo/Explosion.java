@@ -14,20 +14,19 @@ public class Explosion extends Sprite{
 		this.initialCount = initialCount;
 	}
 
-	public void update(){
-		this.tempcount++;
-	}
 	public int getCount(){
 		return initialCount- tempcount;
 	}
-
-
-	public boolean shouldDelete() {
-		// TODO Auto-generated method stub
+	
+	public void update(){
+		this.tempcount++;
+		
 		if(tempcount == initialCount)
-			return true;
-		else
-			return false;
+			super.markForDeletion();
 	}
+
+
+
+
 
 }

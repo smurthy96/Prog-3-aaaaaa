@@ -37,7 +37,7 @@ public class Enemy extends Sprite{
 		this.right = right;
 	}
 	public void setParent(Platform parent){
-		
+		this.parent = parent;
 		parent.addChild(this);
 		setBounds(parent.getXExact(),parent.getXExact()+parent.getWidth());
 		this.givenDx = parent.getDx();
@@ -49,22 +49,25 @@ public class Enemy extends Sprite{
 		super.update();
 		double nextX, nextY;
 		nextY=this.getYExact()+this.getDy();
-		if (parent != null)
-			nextX=this.getXExact()+parent.getDx()+this.getDx();
-		else
-			nextX=this.getXExact()+this.getDx();
+		nextX=this.getXExact()+this.getDx();
+		if (parent!=null)
+			nextX+=parent.getDx();
 		//Handle case when x position goes out of bounds
 		if (nextX+this.getWidth()>=right)
 		{
-			nextX=this.right-this.getWidth();
-			this.setDirection(-this.getDx(), this.getDy());
+			nextX=right-this.getWidth();
+			reverseDirection();
 		}
 		else if (nextX<=left)
 		{
-			nextX=right;
-			this.setDirection(-this.getDx(), this.getDy());
+			nextX=left;
+			reverseDirection();
 		}
 		this.setPosition(nextX, nextY);
 		
+	}
+	public void reverseDirection()
+	{
+		setDirection(-this.getDx(), this.getDy());
 	}
 }

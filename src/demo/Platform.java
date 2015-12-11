@@ -12,8 +12,8 @@ public class Platform extends Sprite{
 
 	private double givenDx = 0;
 	private double givenDy = 0;
-	private double leftbound = 0;
-	private double rightbound = 0;
+	private double left = 0;
+	private double right = 0;
 	Renderer r;
 	ArrayList<Enemy> enemy = new ArrayList<Enemy>();
 	
@@ -21,8 +21,8 @@ public class Platform extends Sprite{
 		// TODO Auto-generated constructor stub
 		super(x,y,width,height,r);
 		this.r = r;
-		this.rightbound = Double.POSITIVE_INFINITY;
-		this.leftbound = Double.NEGATIVE_INFINITY;
+		this.right = Double.POSITIVE_INFINITY;
+		this.left = Double.NEGATIVE_INFINITY;
 		
 		
 	}
@@ -43,8 +43,8 @@ public class Platform extends Sprite{
 		return this.givenDy;
 	}
 	public void setBounds(double left, double right){
-		leftbound = left;
-		rightbound =right;
+		this.left = left;
+		this.right =right;
 		
 	}
 	public void addChild(Enemy e){
@@ -63,18 +63,7 @@ public class Platform extends Sprite{
 		}
 	}
 	public void update(){
-		//this.subX += super.getXExact();
-		//this.subY += super.getYExact();
-		
-		for(int i =0; i < enemy.size();i++){
-			if(enemy.get(i).getDx() > rightbound){
-				enemy.get(i).setDirection(super.getXExact()-super.getWidth(), super.getYExact());
-			}
-			else{
-				enemy.get(i).setDirection(super.getXExact()+super.getWidth(), super.getYExact());
-			}
-		}
-		
+
 		super.update();
 		double newX=super.getXExact()+givenDx;
 		double newY=super.getYExact()+givenDy;
@@ -85,7 +74,24 @@ public class Platform extends Sprite{
 		for(Enemy e: enemy){
 			e.update();
 		}
+		if (newX+this.getWidth()>=right)
+		{
+			newX=right-this.getWidth();
+			reverseDirection();
+		}
+		else if (newX<=left)
+		{
+			newX=left;
+			reverseDirection();
+		}
+		this.setPosition(newX, newY);
+		
 	}
+	public void reverseDirection()
+	{
+		setDirection(-this.getDx(), this.getDy());
+	}
+	
 	
 	public void draw(Graphics g){
 		r.render(g, this);
@@ -95,6 +101,7 @@ public class Platform extends Sprite{
 
 		}
 	}
+	
 	
 	
 }
