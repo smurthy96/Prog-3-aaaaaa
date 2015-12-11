@@ -66,6 +66,15 @@ public class Platform extends Sprite{
 		//this.subX += super.getXExact();
 		//this.subY += super.getYExact();
 		
+		for(int i =0; i < enemy.size();i++){
+			if(enemy.get(i).getDx() > rightbound){
+				enemy.get(i).setDirection(super.getXExact()-super.getWidth(), super.getYExact());
+			}
+			else{
+				enemy.get(i).setDirection(super.getXExact()+super.getWidth(), super.getYExact());
+			}
+		}
+		
 		super.update();
 		double newX=super.getXExact()+givenDx;
 		double newY=super.getYExact()+givenDy;
