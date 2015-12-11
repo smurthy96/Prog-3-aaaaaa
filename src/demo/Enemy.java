@@ -12,6 +12,8 @@ public class Enemy extends Sprite{
 
 	public Enemy(double x, double y, int width, int height, Renderer givenRenderer) {
 		super(x, y, width, height, givenRenderer);
+		left = Double.POSITIVE_INFINITY;
+		right = Double.NEGATIVE_INFINITY;
  
 	}
 	public void setDirection(double givenDx, double givenDy){
@@ -30,7 +32,8 @@ public class Enemy extends Sprite{
 		return this.givenDy;
 	}
 	public void setBounds(double left, double right){
-		
+		this.left = left;
+		this.right = right;
 	}
 	public void setParent(Platform parent){
 		parent.addChild(this);

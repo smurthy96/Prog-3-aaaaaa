@@ -12,6 +12,8 @@ public class Platform extends Sprite{
 
 	private double givenDx = 0;
 	private double givenDy = 0;
+	private double leftbound = 0;
+	private double rightbound = 0;
 	Renderer r;
 	ArrayList<Enemy> enemy = new ArrayList<Enemy>();
 	
@@ -19,6 +21,9 @@ public class Platform extends Sprite{
 		// TODO Auto-generated constructor stub
 		super(x,y,width,height,r);
 		this.r = r;
+		this.rightbound = Double.POSITIVE_INFINITY;
+		this.leftbound = Double.NEGATIVE_INFINITY;
+		
 		
 	}
 	
@@ -38,8 +43,8 @@ public class Platform extends Sprite{
 		return this.givenDy;
 	}
 	public void setBounds(double left, double right){
-		left = Double.POSITIVE_INFINITY;
-		right = Double.NEGATIVE_INFINITY;
+		leftbound = left;
+		rightbound =right;
 		
 	}
 	public void addChild(Enemy e){
@@ -62,10 +67,10 @@ public class Platform extends Sprite{
 		//this.subY += super.getYExact();
 		
 		super.update();
-		 double newX=super.getXExact()+givenDx;
-		 double newY=super.getYExact()+givenDy;
-		 super.setPosition(newX, newY);
-		 this.setDirection(givenDx, givenDy);
+		double newX=super.getXExact()+givenDx;
+		double newY=super.getYExact()+givenDy;
+		super.setPosition(newX, newY);
+		this.setDirection(givenDx, givenDy);
 		
 
 		for(Enemy e: enemy){
