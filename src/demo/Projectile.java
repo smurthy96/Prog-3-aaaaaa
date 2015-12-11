@@ -1,6 +1,5 @@
 package demo;
 
-import java.awt.Graphics;
 
 import hw3.Renderer;
 import hw3.Sprite;
@@ -13,7 +12,6 @@ public class Projectile extends Sprite{
 	private double givenDx = 0;
 	private double givenDy = 0;
 	private double gravity;
-	private Renderer r;
 	public Projectile(int x, int y, int width, int hight, Renderer r) {
 
 		super(x, y,width,hight,r);
@@ -26,18 +24,20 @@ public class Projectile extends Sprite{
 		if(!(ballistic))
 			this.givenDx = givenDx;
 		this.givenDy = givenDy;
+
+
 		
 
 		
 	}
 	public double getDx() {
 		// TODO Auto-generated method stub
-		return this.x;
+		return super.getX();
 	}
 
 	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.y;
+		return this.getY();
 		
 	}
 
@@ -57,11 +57,12 @@ public class Projectile extends Sprite{
 	}
 	public void update()
 	{
-	    super.update();
-	    double newX=super.getXExact()+givenDx;
-	    double newY=super.getYExact()+givenDy;
-	    super.setPosition(givenDx, givenDy+gravity);
-	    super.setPosition(newX, newY);
+		 super.update();
+		 double newX=super.getXExact()+givenDx;
+		 double newY=super.getYExact()+givenDy;
+		 super.setPosition(newX, newY);
+		 this.setDirection(givenDx, givenDy+gravity);
+		 
 	}
 
 	

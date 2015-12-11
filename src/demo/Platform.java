@@ -19,10 +19,7 @@ public class Platform extends Sprite{
 	public Platform (double x, double y, int width, int height, Renderer r) {
 		// TODO Auto-generated constructor stub
 		super(x,y,width,height,r);
-		
 		this.r = r;
-		this.subX = x;
-		this.subY = y; 
 		
 	}
 	
@@ -34,12 +31,12 @@ public class Platform extends Sprite{
 	}
 	public double getDx() {
 		// TODO Auto-generated method stub
-		return this.givenDx;
+		return this.subY;
 	}
 
 	public double getDy() {
 		// TODO Auto-generated method stub
-		return this.givenDy-subY;
+		return this.subX;
 	}
 	public void setBounds(double left, double right){
 		left = Double.POSITIVE_INFINITY;
@@ -62,8 +59,14 @@ public class Platform extends Sprite{
 		}
 	}
 	public void update(){
-		this.subX += super.getXExact();
-		this.subY += super.getYExact();
+		//this.subX += super.getXExact();
+		//this.subY += super.getYExact();
+		
+		super.update();
+		 double newX=super.getXExact()+givenDx;
+		 double newY=super.getYExact()+givenDy;
+		 super.setPosition(newX, newY);
+		 this.setDirection(givenDx, givenDy);
 		
 
 		for(Enemy e: enemy){

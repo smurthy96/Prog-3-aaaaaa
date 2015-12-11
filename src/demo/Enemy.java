@@ -43,7 +43,10 @@ public class Enemy extends Sprite{
 		this.y += parent.getDy();
 	}
 	public void update(){
-		this.x += this.givenDx;
-		this.y += this.givenDy;
+		super.update();
+		double newX=super.getXExact()+givenDx;
+		double newY=super.getYExact()+givenDy;
+		super.setPosition(newX, newY);
+		this.setDirection(givenDx, givenDy);
 	}
 }
