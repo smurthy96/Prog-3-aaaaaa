@@ -6,8 +6,7 @@ import hw3.Sprite;
 
 public class Projectile extends Sprite{
 	
-	private double x = 0;
-	private double y = 0;
+
 	private boolean ballistic;
 	private double givenDx = 0;
 	private double givenDy = 0;

@@ -9,8 +9,7 @@ import hw3.Sprite;
 public class Platform extends Sprite{
 
 
-	private double subX = 0;
-	private double subY = 0;
+
 	private double givenDx = 0;
 	private double givenDy = 0;
 	Renderer r;
@@ -24,8 +23,8 @@ public class Platform extends Sprite{
 	}
 	
 	public void setDirection(double givenDx, double givenDy){
-		this.subX = givenDx;
-		this.subY = givenDy;
+		this.givenDx = givenDx;
+		this.givenDy = givenDy;
 
 
 	}

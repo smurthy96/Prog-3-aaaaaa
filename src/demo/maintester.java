@@ -102,8 +102,8 @@ public class maintester {
 //////////////////////////////////////////////////////////////////
 		
 		
-		Projectile e = new Projectile(100, 0, 10, 10, null);
-		//e.setBounds(90, 120);
+		Platform e = new Platform(100, 0, 10, 10, null);
+		e.setBounds(90, 120);
 		e.setDirection(15, 0);
 		e.update();
 		System.out.println(e.getX()); // should be 110, right side of object can't go past boundary
